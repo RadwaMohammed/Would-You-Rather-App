@@ -6,7 +6,7 @@ import { receiveUsers } from '../actions/users';
 import { setAuthedUser } from '../actions/authedUser';
 
 // For only developing code
-const AUTHED_ID = 'tylermcginnis';
+const AUTHED_ID = null;
 /**
  * Getting the initial data that the app needs
  * using redux-thunk pattern because we want to make asynchronous request
