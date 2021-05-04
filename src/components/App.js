@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 // Using bootsrap framework
@@ -20,18 +21,22 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fluid>
         { 
           /* 
            * If the authedUser is not null then display the MainRouter 
            * component else display the Login component 
           */
           this.props.authedUser 
-            ? <Fragment>
-                <NavMenu />
-                <MainRouter />
-              </Fragment>
-            : <Login /> 
+            ? <Router>
+                <Fragment>
+                  <NavMenu />
+                  <Container>
+                    <MainRouter />
+                  </Container>
+                </Fragment>
+              </Router>
+            : <Router><Route path='/' exact component={Login} /></Router>
 
         }
       </Container>
