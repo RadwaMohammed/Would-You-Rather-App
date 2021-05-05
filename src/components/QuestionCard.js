@@ -6,7 +6,7 @@ import QuestionDetails from './QuestionDetails';
 class QuestionCard extends Component {
 
   render() {
-    const { question ,isAnswered, author, authedUser } = this.props;
+    const { question ,isAnswered, author} = this.props;
     return (
       <Card  className="q-card">
         <h3>{author.name} asks:</h3>
@@ -14,7 +14,6 @@ class QuestionCard extends Component {
           <Card.Img variant="top" src={author.avatarURL} className="author-img" />
           <QuestionDetails 
             isAnswered={isAnswered} 
-            authedUser={authedUser} 
             question={question} 
           />
         </div>
