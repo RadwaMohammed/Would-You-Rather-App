@@ -12,7 +12,7 @@ class Question extends Component {
       <CardWrapper author={author}> 
         { 
           isAnswered 
-            ? <QuestionResults auhtedUser={authedUser} question={question} /> 
+            ? <QuestionResults authedUser={authedUser} question={question} /> 
             : <ViewQuestion  question={question} />
         }
       </CardWrapper>
