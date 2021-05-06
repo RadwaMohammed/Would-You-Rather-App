@@ -1,6 +1,7 @@
 import { 
   RECEIVE_QUESTIONS, 
-  Add_ANSWER_TO_QUESTION 
+  Add_ANSWER_TO_QUESTION, 
+  ADD_QUESTION
 } from '../actions/questions';
 
 /**
@@ -18,18 +19,23 @@ export default function questions(state = {}, action) {
       };
 
     case Add_ANSWER_TO_QUESTION:
-      const { authedUser, qid, answer } = action;
       return {
         ...state,
-        [qid]: {
-          ...state[qid],
-          [answer]: {
-            ...state[qid][answer],
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
             // Add the autheUser'id to the votes array of the question's answer
-            votes: state[qid][answer].votes.concat([authedUser]) 
+            votes: state[action.qid][action.answer].votes.concat([action.authedUser]) 
           }
         }
       };
+    
+      case ADD_QUESTION:
+        return {
+          ...state,
+          [action.question.id]: action.question
+        };
 
     default:
       return state;

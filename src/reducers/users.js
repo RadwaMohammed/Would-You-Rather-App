@@ -1,6 +1,7 @@
 import { 
   RECEIVE_USERS, 
-  Add_ANSWERED_QUESTION_TO_USER 
+  ADD_ANSWERED_QUESTION_TO_USER, 
+  USER_ADD_QUESTION
 } from '../actions/users';
 
 
@@ -18,18 +19,28 @@ export default function users(state = {}, action) {
         ...action.users,
       };
     
-    case Add_ANSWERED_QUESTION_TO_USER:
-      const { authedUser, qid, answer } = action;
+    case ADD_ANSWERED_QUESTION_TO_USER:
       return {
         ...state,
-        [authedUser]: {
-          ...state[authedUser],
+        [action.authedUser]: {
+          ...state[action.authedUser],
           answers: {
-            ...state[authedUser].answers,
-            [qid]: answer // Add the answer key: value - questionId: answer
+            ...state[action.authedUser].answers,
+            [action.qid]: action.answer // Add the answer key: value - questionId: answer
           } 
         }  
       };
+    
+    case USER_ADD_QUESTION:
+      return {
+        ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser], // add question to the user created it
+          questions: state[action.authedUser].questions.concat([action.qid])
+        } 
+        
+      };
+    
     default:
       return state;
   }
