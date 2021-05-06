@@ -1,5 +1,9 @@
+import { saveQuestionAnswer } from '../utils/api';
+import { addAnsweredQuestionToUser } from '../actions/users'
 // Variable to hold action type
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const Add_ANSWER_TO_QUESTION = 'Add_ANSWER_TO_QUESTION';
+
 
 /**
  * Action creator - receiveQuestions
@@ -11,4 +15,45 @@ export function receiveQuestions(questions) {
     type: RECEIVE_QUESTIONS, // Type of event occured
     questions,
   };
+}
+
+/**
+ * Action creator - addAnswerToQuestion
+ * @param {Object} qInfo - question information
+ * @param {string} qInfo.authedUser - The authedUder who answer the question
+ * @param {strin} qInfo.qid - The question's id
+ * @param {string} qInfo.answer - optionOne or optionTwo
+ * @returns {object} The action object
+ */
+export function addAnswerToQuestion({ authedUser, qid, answer }) {
+  return {
+    type: Add_ANSWER_TO_QUESTION, // Type of event occured
+    authedUser,
+    qid,
+    answer
+  };
+}
+
+
+/**
+ * Asynchronous action creator - handleAddAnswer
+ * @param {Object} qInfo - question information
+ * @param {string} qInfo.authedUser - The authedUder who answer the question
+ * @param {strin} qInfo.qid - The question's id
+ * @param {string} qInfo.answer - optionOne or optionTwo 
+ */  
+export function handleAddAnswer({authedUser, questionId, answer}) {
+  return async dispatch => {
+    // Before the request show loading bar
+    dispatch(showLoading());
+    dispatch(addAnswerToQuestion({ authedUser, qid, answer }));
+    dispatch(addAnsweredQuestionToUser({ authedUser, qid, answer }));
+    try {
+      await saveQuestionAnswer({ authedUser, qid, answer });
+      // Finally hide the loading bar
+      return dispatch(hideLoading());
+    } catch (e) {
+      console.warn('Error occured:', e);
+    }
+  }
 }
