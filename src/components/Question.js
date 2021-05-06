@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import QuestionResults from './QuestionResults';
 import ViewQuestion from './ViewQuestion';
 import CardWrapper from './CardWrapper';
+import NotFound from './NotFound';
 
 class Question extends Component {
   render() {
     const { question ,isAnswered, author, authedUser} = this.props;
+    if (author) {
     return ( 
       <CardWrapper author={author}> 
         { 
@@ -16,7 +18,9 @@ class Question extends Component {
             : <ViewQuestion  question={question} />
         }
       </CardWrapper>
-    )
+    )} else {
+      return <NotFound />
+    }
   }
 }
 
@@ -46,7 +50,7 @@ function mapStateToProps ({ authedUser, users, questions }, props) {
     authedUser,
     isAnswered: userAnsweredQuestionsArr.includes(id),
     question: questions[id],
-    author: users[questions[id].author]
+    author: questions[id] ? users[questions[id].author] : null
   }
 }
 

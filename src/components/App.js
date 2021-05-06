@@ -1,13 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
-import NavMenu from './NavMenu';
 import MainRouter from './MainRouter';
 import Login from './Login';
 // Using bootsrap framework
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -28,26 +25,19 @@ class App extends Component {
           progressIncrease={100} 
           style={{ backgroundImage: 'linear-gradient(to right,blue,gray)', height: '5px' }} 
         />
-      : <Router>
-          <Fragment>
-            { authedUser // If the authed user exist go to MainRouter component else go to login page
-              ? <Fragment>
-                <LoadingBar 
-                    updateTime={200} 
-                    maxProgress={100} 
-                    progressIncrease={100} 
-                    style={{ backgroundImage: 'linear-gradient(to right,blue,gray)', height: '5px', zIndex: 1000 }} 
-                />
-                  <NavMenu />
-                  <Container>
-                    <MainRouter />
-                  </Container>
-                </Fragment>
-              : <Container> 
-                  <Route path='/' exact component={Login} />
-                </Container>}
-          </Fragment>
-        </Router>
+      : authedUser // If the authed user exist go to MainRouter component else go to login page
+        ? <Fragment>
+            <LoadingBar 
+                updateTime={200} 
+                maxProgress={100} 
+                progressIncrease={100} 
+                style={{ backgroundImage: 'linear-gradient(to right,blue,gray)', height: '5px', zIndex: 1000 }} 
+            />
+            <MainRouter />
+        </Fragment>
+      : <Login />
+  
+       
   }  
 }
 

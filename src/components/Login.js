@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
-
+import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -37,33 +37,35 @@ class Login extends Component {
     const { authedUserId } = this.state;
     const { users } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group controlId="Form.ControlSelect">
-          <Form.Label>Log In</Form.Label>
-          <Form.Control 
-            as="select" 
-            size="lg" 
-            value={authedUserId} 
-            onChange={this.handleChange}
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="Form.ControlSelect">
+            <Form.Label>Log In</Form.Label>
+            <Form.Control 
+              as="select" 
+              size="lg" 
+              value={authedUserId} 
+              onChange={this.handleChange}
+            >
+              <option value="" disabled>Please select a user</option>
+              {
+                // Loop over the users array to dispaly the users's names
+                users.map(user => (<option key={user.id} value={user.id}>
+                  {user.name}
+                </option>))
+              }
+            </Form.Control>
+          </Form.Group>
+          <Button 
+            variant="primary" 
+            type="submit" 
+            // To make sure the authedUserId  always not empty
+            disabled={authedUserId === ''} 
           >
-            <option value="" disabled>Please select a user</option>
-            {
-              // Loop over the users array to dispaly the users's names
-              users.map(user => (<option key={user.id} value={user.id}>
-                {user.name}
-              </option>))
-            }
-          </Form.Control>
-        </Form.Group>
-        <Button 
-          variant="primary" 
-          type="submit" 
-          // To make sure the authedUserId  always not empty
-          disabled={authedUserId === ''} 
-        >
-          Submit
-        </Button>
-      </Form>
+            Submit
+          </Button>
+        </Form>
+      </Container>
     )
   }
 }
