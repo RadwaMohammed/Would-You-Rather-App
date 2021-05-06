@@ -1,23 +1,20 @@
+// Component of the question card in the home page - path '/'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from 'react-bootstrap/Card';
 import QuestionDetails from './QuestionDetails';
+import CardWrapper from './CardWrapper';
 
 class QuestionCard extends Component {
 
   render() {
     const { question ,isAnswered, author} = this.props;
     return (
-      <Card  className="q-card">
-        <h3>{author.name} asks:</h3>
-        <div className="q-details">
-          <Card.Img variant="top" src={author.avatarURL} className="author-img" />
-          <QuestionDetails 
-            isAnswered={isAnswered} 
-            question={question} 
-          />
-        </div>
-      </Card>
+      <CardWrapper author={author}>
+        <QuestionDetails 
+          isAnswered={isAnswered} 
+          question={question} 
+        />
+      </CardWrapper>
     )
   }
 }

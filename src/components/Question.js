@@ -1,20 +1,21 @@
+// Component of question page - path '/questions/:id'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from 'react-bootstrap/Card';
 import QuestionResults from './QuestionResults';
 import ViewQuestion from './ViewQuestion';
+import CardWrapper from './CardWrapper';
 
 class Question extends Component {
   render() {
     const { question ,isAnswered, author, authedUser} = this.props;
-    return (
-      <Card className="q-card">
-        <h3>{author.name} asks:</h3>
-        <div className="q-details">
-          <Card.Img variant="top" src={author.avatarURL} className="author-img" />
-          {isAnswered ? <QuestionResults /> : <ViewQuestion />}
-        </div>
-      </Card>
+    return ( 
+      <CardWrapper author={author}> 
+        { 
+          isAnswered 
+            ? <QuestionResults auhtedUser={authedUser} question={question} /> 
+            : <ViewQuestion  question={question} />
+        }
+      </CardWrapper>
     )
   }
 }
@@ -44,7 +45,7 @@ function mapStateToProps ({ authedUser, users, questions }, props) {
   return {
     authedUser,
     isAnswered: userAnsweredQuestionsArr.includes(id),
-    question: questions.id,
+    question: questions[id],
     author: users[questions[id].author]
   }
 }

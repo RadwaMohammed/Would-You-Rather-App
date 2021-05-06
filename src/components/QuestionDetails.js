@@ -1,3 +1,5 @@
+// Component of the question's details of the QuestionCard 
+// in the home page - path '/'
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
@@ -28,7 +30,7 @@ class QuestionDetails extends Component {
             ... {question.optionOne.text} ...
           </Card.Text>
           <Button variant="primary" onClick={this.toQuestionPage}>
-            {isAnswered ? 'View Results' : 'Answer'}
+            {isAnswered ? 'Results' : 'Answer'}
           </Button>
         </Card.Body>
       </div>
