@@ -1,4 +1,8 @@
-import { RECEIVE_USERS } from '../actions/users';
+import { 
+  RECEIVE_USERS, 
+  Add_ANSWERED_QUESTION_TO_USER 
+} from '../actions/users';
+
 
 /**
  * Reducer function <users>  
@@ -12,6 +16,19 @@ export default function users(state = {}, action) {
       return {
         ...state,
         ...action.users,
+      };
+    
+    case Add_ANSWERED_QUESTION_TO_USER:
+      const { authedUser, qid, answer } = action;
+      return {
+        ...state,
+        [authedUser]: {
+          ...state[authedUser],
+          answers: {
+            ...state[authedUser].answers,
+            [qid]: answer // Add the answer key: value - questionId: answer
+          } 
+        }  
       };
     default:
       return state;
