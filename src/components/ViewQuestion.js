@@ -1,7 +1,7 @@
 // Component to view unanswered question (question form)
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import LoadingBar from 'react-redux-loading-bar';
+
 import { handleAddAnswer } from '../actions/questions';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -44,12 +44,7 @@ class ViewQuestion extends Component {
    
     return (
       <Fragment>
-        <LoadingBar 
-          updateTime={200} 
-          maxProgress={100} 
-          progressIncrease={100} 
-          style={{ backgroundImage: 'linear-gradient(to right,blue,gray)', height: '5px' }} 
-        />
+        
         <Card.Body>
           <Card.Title>Would you rather</Card.Title>
           <Form onSubmit={this.handleSubmit}>
@@ -90,7 +85,7 @@ class ViewQuestion extends Component {
 }
 
 /**
- * The mapStateToProps function - get the state parts that App component needs
+ * The mapStateToProps function - get the state parts that ViewQuestion component needs
  * @param {Object} state - The state of the store 
  * @param {string} state.authedUser - The authedUser
  * @returns {object} An object containing authedUser {string} 

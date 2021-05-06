@@ -32,6 +32,12 @@ class App extends Component {
           <Fragment>
             { authedUser // If the authed user exist go to MainRouter component else go to login page
               ? <Fragment>
+                <LoadingBar 
+                    updateTime={200} 
+                    maxProgress={100} 
+                    progressIncrease={100} 
+                    style={{ backgroundImage: 'linear-gradient(to right,blue,gray)', height: '5px', zIndex: 1000 }} 
+                />
                   <NavMenu />
                   <Container>
                     <MainRouter />
