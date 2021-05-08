@@ -44,7 +44,6 @@ class ViewQuestion extends Component {
    
     return (
       <Fragment>
-        
         <Card.Body>
           <Card.Title>Would you rather</Card.Title>
           <Form onSubmit={this.handleSubmit}>
@@ -78,8 +77,6 @@ class ViewQuestion extends Component {
           </Form>
         </Card.Body>
       </Fragment>
-      
-
     )
   }
 }
@@ -98,7 +95,6 @@ const mapStateToProps = ({ authedUser }) => ({ authedUser });
  * @returns {object} An object containing property its value is a function that
  *                   dispatch action returned by action creator <handleAddAnswer>
  */
-
 const mapDispatchToProps = dispatch => ({
   handleAddAnswer: ({ authedUser, qid, answer }) => 
     dispatch(handleAddAnswer({ authedUser, qid, answer }))

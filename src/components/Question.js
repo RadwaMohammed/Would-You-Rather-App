@@ -5,19 +5,22 @@ import QuestionResults from './QuestionResults';
 import ViewQuestion from './ViewQuestion';
 import CardWrapper from './CardWrapper';
 import NotFound from './NotFound';
+import Container from 'react-bootstrap/Container';
 
 class Question extends Component {
   render() {
     const { question ,isAnswered, author, authedUser} = this.props;
     if (author) {
     return ( 
-      <CardWrapper author={author}> 
-        { 
-          isAnswered 
-            ? <QuestionResults authedUser={authedUser} question={question} /> 
-            : <ViewQuestion  question={question} />
-        }
-      </CardWrapper>
+      <Container className="q-wrapper">
+        <CardWrapper author={author}> 
+          { 
+            isAnswered 
+              ? <QuestionResults authedUser={authedUser} question={question} /> 
+              : <ViewQuestion  question={question} />
+          }
+        </CardWrapper>
+      </Container> 
     )} else {
       return <NotFound />
     }

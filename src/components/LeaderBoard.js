@@ -1,6 +1,7 @@
 // Component for Laeder Board page;
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -10,21 +11,22 @@ class LeaderBoard extends Component {
   render() {
     const { topUsers, users } = this.props;
     return (
-      <div>
-        {topUsers.map(user => (
-          <Row key={user.id}>
+      <Container className="top-user-wrapper">
+        {topUsers.map((user, i) => (
+          <Row key={user.id} className="top-user">
             <Col>
+              <span>{i + 1}</span>
               <img src= {users[user.id].avatarURL} alt={users[user.id].name} />
             </Col>
             <Col>
             <ListGroup variant="flush">
-              <h3>{users[user.id].name}</h3>
+              <h4>{users[user.id].name}</h4>
               <ListGroup.Item>
-                Answered questions 
+                <p>Answered questions</p>
                 <span>{user.answeredQuestions}</span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Created questions
+                <p>Created questions</p>
                 <span>{user.createdQuestions}</span>
               </ListGroup.Item>
             </ListGroup>
@@ -44,17 +46,16 @@ class LeaderBoard extends Component {
             </Col>
           </Row>
         ))}
-      </div>
+      </Container>
     )
   }
 }
 /**
- * The mapStateToProps function - get the state parts that LoadingBoard component needs
+ * The mapStateToProps function - get the state parts that LeaderBoard component needs
  * @param {Object} state - The state of the store 
  * @returns {object} An object containing the top users of the highest score {object}
  *                   and users {object} containing all the users
  */
-
 const mapStateToProps = ({users}) => {
   const topUsers = Object.values(users).map(user => ({
     id: user.id,

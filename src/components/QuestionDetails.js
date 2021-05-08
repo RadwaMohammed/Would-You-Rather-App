@@ -23,17 +23,16 @@ class QuestionDetails extends Component {
   render() {
     const {isAnswered, question} = this.props;
     return (
-      <div>
-        <Card.Body>
-          <Card.Title>Would you rather</Card.Title>
-          <Card.Text>
-            ... {question.optionOne.text} ...
-          </Card.Text>
-          <Button variant="primary" onClick={this.toQuestionPage}>
-            {isAnswered ? 'Results' : 'Answer'}
-          </Button>
-        </Card.Body>
-      </div>
+      <Card.Body>
+        <Card.Title>Would you rather</Card.Title>
+        <Card.Text>
+          ... {question.optionOne.text} ...
+        </Card.Text>
+        <Button variant="primary" onClick={this.toQuestionPage}>
+          {isAnswered ? 'Results' : 'Answer'}
+        </Button>
+      </Card.Body>
+
     )
   }
 }

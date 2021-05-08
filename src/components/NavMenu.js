@@ -26,15 +26,15 @@ class NavMenu extends Component {
     const {users, authedUser } = this.props;
     const currentUser = users[authedUser];
     return (
-      <Navbar bg="light">
-        <Navbar.Brand>
+      <Navbar className="nav-menu">
+        <Navbar.Brand className="nav-menu-size">
           {/* Render nav links */}
           <NavLinks />
         </Navbar.Brand>
         <Navbar.Brand>
           <img src={currentUser.avatarURL} alt={currentUser.name} className="avatarIcon" />
           <span>{currentUser.name}</span>
-          <Button variant="primary" onClick={this.handleLogout}>Log Out</Button>
+          <Button onClick={this.handleLogout}>Log Out</Button>
         </Navbar.Brand>
       </Navbar>
     )
@@ -51,7 +51,6 @@ class NavMenu extends Component {
  * @returns {object} An object containing the authedUser's id {string}
  *                   and users {object} containing all the users
  */
-
 const mapStateToProps = ({ authedUser, users}) => {
   return {
     authedUser,
@@ -65,7 +64,6 @@ const mapStateToProps = ({ authedUser, users}) => {
  * @returns {object} An object containing property its value is a function that
  *                   dispatch action returned by action creator <setAuthedUser>
  */
-
 const mapDispatchToProps = dispatch => ({
   setAuthedUser: id => dispatch(setAuthedUser(id))
 });

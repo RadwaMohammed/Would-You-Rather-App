@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 
 class Login extends Component {
 
@@ -37,7 +39,15 @@ class Login extends Component {
     const { authedUserId } = this.state;
     const { users } = this.props;
     return (
-      <Container>
+      <Container className="login-wrapper">
+        <Row>
+          <p>
+            <span>Would</span>
+            <span>You</span>
+            <span>Rater</span>
+            <span>?</span>
+          </p>
+        </Row>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="Form.ControlSelect">
             <Form.Label>Log In</Form.Label>
@@ -55,15 +65,16 @@ class Login extends Component {
                 </option>))
               }
             </Form.Control>
-          </Form.Group>
-          <Button 
+            <Button 
             variant="primary" 
             type="submit" 
             // To make sure the authedUserId  always not empty
             disabled={authedUserId === ''} 
-          >
-            Submit
-          </Button>
+            >
+              Submit
+            </Button>
+          </Form.Group>
+          
         </Form>
       </Container>
     )
@@ -72,7 +83,7 @@ class Login extends Component {
 
 
 /**
- * The mapStateToProps function - get the state parts that App component needs
+ * The mapStateToProps function - get the state parts that Login component needs
  * @param {Object} state - The state of the store 
  * @param {object} state.users - The users slice of the state
  * @returns {object} An object containing the users'values array 

@@ -7,9 +7,9 @@ export default function CardWrapper(props) {
   const { author } = props;
   return (
     <Card  className="q-card">
-      <h3>{author.name} asks:</h3>
+      <h4>{author.name} asks:</h4>
       <div className="q-details">
-        <Card.Img variant="top" src={author.avatarURL} className="author-img" />
+        <Card.Img variant="top" src={author.avatarURL} alt={author.name} className="author-img" />
         { props.children }
       </div>
     </Card>

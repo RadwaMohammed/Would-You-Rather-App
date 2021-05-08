@@ -2,8 +2,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
+import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 
 
 class NewQuestion extends Component {
@@ -46,40 +48,40 @@ class NewQuestion extends Component {
   render() {
     const { optionOneText, optionTwoText } = this.state;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <h3>Create New Question</h3>
-        <Form.Group>
-          <Form.Text className="text-muted">
-            Complete the question:
-          </Form.Text>
-          <Form.Label>Would you rather ...</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter Option One Text Here"
-            id="optionOneText" 
-            value={optionOneText}
-            onChange={this.handleChange}
-          />
-          <p>OR</p>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter Option Two Text Here" 
-            id="optionTwoText"
-            value={optionTwoText}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-
-        <Button 
-          variant="primary" 
-          type="submit"
-          disabled={ // Make sure that the user enter text not only white space
-            !optionOneText.trim() || !optionTwoText.trim() 
-          }
-        >
-          Submit
-        </Button>
-      </Form>
+      <Container className="new-q-wrapper">
+        <Form onSubmit={this.handleSubmit}>
+          <h3>Create New Question</h3>
+          <Form.Group>
+            <Form.Text className="text-muted">
+              Complete the question:
+            </Form.Text>
+            <Form.Label>Would you rather ...</Form.Label>
+            <Form.Control 
+              type="text" 
+              placeholder="Enter Option One Text Here"
+              id="optionOneText" 
+              value={optionOneText}
+              onChange={this.handleChange}
+            />
+            <p>OR</p>
+            <Form.Control 
+              type="text" 
+              placeholder="Enter Option Two Text Here" 
+              id="optionTwoText"
+              value={optionTwoText}
+              onChange={this.handleChange}
+            />
+            <Button 
+            variant="primary" 
+            type="submit"
+            disabled={ // Make sure that the user enter text not only white space
+              !optionOneText.trim() || !optionTwoText.trim() }
+            >
+              Submit
+            </Button>
+          </Form.Group> 
+        </Form>
+      </Container>
     )
   }
 }
@@ -98,7 +100,6 @@ const mapStateToProps = ({ authedUser }) => ({ author: authedUser });
  * @returns {object} An object containing property its value is a function that
  *                   dispatch action returned by action creator <handleAddQuestion>
  */
-
 const mapDispatchToProps = dispatch => ({
   handleAddQuestion: ({ optionOneText, optionTwoText, author }) => 
     dispatch(handleAddQuestion({ optionOneText, optionTwoText, author }))

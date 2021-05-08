@@ -1,60 +1,606 @@
+#root {
+  padding-bottom: 2rem;
+  color:#2c3885;
+  font-family: cursive;
+}
 
+/*------------ nav menu ------------*/
+nav.nav-menu {
+  justify-content: space-around;
+  background-color: #e8e3d0 ;
+  flex-wrap: wrap-reverse;
+}
+
+/* links active in the nav menu */
+nav.navbar-light .navbar-nav .nav-link.active{
+  color:#2c3885;
+  border-bottom: 1px solid #2c3885;
+}
+
+span.nav-menu-size {
+  font-size: 1rem; 
+}
+
+/* avatar name */
+span.navbar-brand span {
+  font-size: 0.9rem;
+  margin-right: 0.9em;
+  color: #2c3885;
+}
+
+/* avatar image */
 .avatarIcon {
   width: 40px;
   height: 40px;
+  margin-top: -0.3em;
+  margin-right: 0.1em;
 }
 
-/* Styles for Tab element in Home componenet */
+/* logout button */
+nav.nav-menu button {
+  color: #e8e3d0;
+  background-color: #cd9929;
+  border:none;
+  font-size: 0.85rem;
+  width: 8em;
+  height: 2.7em;
+}
+
+nav.nav-menu button.btn-primary:not(:disabled):not(.disabled):active,
+div.login-wrapper form button.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #daa73b;
+  color: #fff;
+  box-shadow: none;
+}
+
+nav.nav-menu button:hover, 
+div.login-wrapper form button:hover {
+  background-color: #daa73b;  
+}
+
+
+/*------------ Home ------------*/
+div.polls-tab, 
+div.top-user-wrapper,
+.q-wrapper, 
+div.new-q-wrapper, 
+div.not-found-wrapper,
+div.login-wrapper {
+  margin-top: 3em;
+  max-width: 50em;
+}
+
 .polls-tab .active, 
 .polls-tab .nav-tabs .nav-link.active{
-  background-color: #ccc;
-  border-color:#ccc;
-}
-.polls-tab .nav-tabs .nav-link{
-  width: 50%;
-  border-bottom: 1px solid cornflowerblue;
+  background-color: #4453aa;
+  border-color:#2c3885;
 }
 
-.polls-tab .nav-tabs a.nav-link.active{
-  background-color: #ccc;
-  border-color:#ccc;
-  border-top: 1px solid cornflowerblue;
-  border-left: 1px solid cornflowerblue;
-  border-right: 1px solid cornflowerblue;
+.polls-tab .nav-tabs .nav-link {
+  width: 50%;
+  border-bottom: 1px solid #2c3885;  
 }
+
+.polls-tab .nav-tabs a.nav-link.active {
+  background-color: #2c3885;
+  border-color:#2c3885;
+  border-top: 1px solid #2c3885;
+  border-left: 1px solid #2c3885;
+  border-right: 1px solid #2c3885;
+  color: #e8e3d0;
+}
+
 .polls-tab .active {
-  border-bottom: 1px solid cornflowerblue;
-  border-left: 1px solid cornflowerblue;
-  border-right: 1px solid cornflowerblue;
+  border-bottom: 1px solid #2c3885;
+  border-left: 1px solid #2c3885;
+  border-right: 1px solid #2c3885;
 }
+
 .polls-tab .nav-tabs .nav-link, 
-.polls-tab .nav-tabs .nav-link:hover{
-  border-radius: 0;
+.polls-tab .nav-tabs .nav-link:hover {
   border: 1px solid transparent;
-  border-bottom: 1px solid cornflowerblue;
+  border-bottom: 1px solid #2c3885;
 }
+
 .polls-tab .nav-tabs {
   text-align: center;
-  background-color: #eee;
+  color:#e8e3d0;
 }
-.polls-tab .tab-content>.active{
+
+.polls-tab .nav-tabs a {
+  color:#2c3885;
+  background-color: #e8e3d0;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.85em;
+}
+
+.polls-tab .tab-content>.active {
 padding-top: 1.5em;
 padding-bottom: 1.5em;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
 }
-
-
 
 div.q-card {
   margin: 0 auto 1em;
-
-  width: 80%;
+  background-color: #f3f2ed;
+  width: 70%;
 }
 
-img, .card .author-img {
-  width: 120px;
-  height: 120px;
-  margin-top: 1.5%;
+img, 
+.card .author-img {
+  width: 100px;
+  height: 100px;
+  margin: 2% auto;
+  max-width: 100%;
 }
+
+div.q-card h4 {
+  font-size: 1.15rem;
+  color:#6a675d;
+  padding:0.6em 1em;
+  border-bottom: 1px dashed #c0bba7;
+  background-color: #e8e3d0;
+}
+
 .q-details {
   display: flex;
+  padding-left:1.1em;
+}
+
+.card-title {
+  color:#2c3885;
+  font-size: 1.1rem;
+}
+
+div.q-card .card-body {
+  border-left: 1px dashed #c0bba7;
+  margin-left: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+ p.card-text {
+  text-align: center;
+  color:#2c3885;
+}
+
+div.q-card .card-body button {
+  color: #e8e3d0;
+  background-color: #4453aa;
+  border: none;
+  font-size: 0.85rem;
+  height: 2.5em;
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+div.q-card .card-body button:hover {
+  background-color:#2c3885;
+}
+
+
+/*------------ view question page ------------*/
+.q-wrapper form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.q-wrapper div.custom-control {
+  min-height: 2em;
+}
+
+.q-wrapper button {
+  margin-top: 1em ;
+  margin-bottom: 1em;
+}
+
+.q-wrapper div.q-card button:hover {
+  background-color: #4453aa;
+}
+
+button.btn-primary:disabled {
+  opacity: 0.4;
+}
+
+
+/*------------ Result page ------------*/
+div.q-card .q-result .card-body {
+  border: none;
+  display: block;
+}
+
+div.q-card .q-result .card-body p.card-text {
+  text-align: left;
+}
+
+div.q-card .q-result div.card {
+  margin-bottom: 1em;
+}
+
+div.q-card .q-result div.card p:last-child {
+  text-align: center;
+  padding-top: 1em;
+  color:#6a675d;
+  font-size: 1rem;
+}
+
+div.q-card .q-result .progress-bar {
+  min-width: 8%;
+  background-color:#2c3885;
+}
+
+div.q-card .q-result .progress {
+  height: 2em;
+  background-color: #e8e3d0;
+}
+
+div.q-card .q-result .badge-pill {
+  background-color: #cd9929;
+  padding: 1em 2em;
+  color: #fff;
+  position: absolute;
+  top: -0.1em;
+  right: -1.5em;
+}
+
+div.q-card .q-result .card-title {
+  color: #a57b21;
+}
+
+div.q-card .q-result div.user-vote {
+  border-color: #daa73b;
+}
+
+.q-wrapper div.q-card {
+  max-width: 100%;
+}
+
+
+/*------------ Leaderbord page ------------*/
+div.top-user-wrapper .top-user {
+  background-color: #f3f2ed;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: .25rem;
+}
+
+div.top-user-wrapper .top-user div.col {
+  display: flex;
+  align-items: center;
+  padding: 0 3em;
+}
+
+div.top-user-wrapper .top-user div.col:first-child, 
+div.top-user-wrapper .top-user div.col:last-child {
+  max-width: 20%;
+  justify-content: center;
+  padding: 0;
+}
+
+div.top-user-wrapper .top-user div.col:first-child {
+  border-right: 1px dashed #c0bba7;
+}
+
+div.top-user-wrapper .top-user div.col:first-child span {
+  position: absolute;
+  top: 0;
+  left: 0.3em;
+  font-size: 2em;
+  font-weight: bold;
+  color: #cd9929;
+  font-family: 'Reggae One', cursive;
+}
+
+div.top-user-wrapper .top-user div.col:last-child {
+  border-left: 1px dashed #c0bba7;
+}
+
+div.top-user-wrapper .top-user div.col:last-child .card {
+  width: 70%;
+  margin: 0.5rem auto;
+  border: none;
+}
+
+div.top-user-wrapper .top-user .card-header {
+  color: #fff;
+  background-color: #cd9929;
+  text-align: center;
+  font-weight: bold;
+  height: 3em;
+}
+
+div.top-user-wrapper .top-user .card-text {
+  padding: 0.5em;
+  width: 3em;
+  margin: 0 auto;
+  border-radius: 50%;
+  font-weight: bold;
+  border: 1px solid #cd9929;
+}
+
+div.top-user-wrapper .top-user .list-group {
+  width: 100%;
+}
+
+div.top-user-wrapper .top-user .list-group-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f3f2ed;
+  padding: 0;
+  border: none;
+}
+
+div.top-user-wrapper .top-user .list-group-item:last-child {
+  border-top: 1px solid #c0bba7;
+  padding-top: 1em;
+}
+
+div.top-user-wrapper .top-user h4 {
+  margin:1em 0;
+}
+
+
+/*------------ New quesion page ------------*/
+div.new-q-wrapper form {
+  background-color: #f3f2ed;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: .25rem;
+}
+
+div.new-q-wrapper {
+  padding-bottom: 0.5em;
+}
+
+div.new-q-wrapper form h3 {
+  padding:0.8em;
+  border-bottom: 1px dashed #c0bba7;
+  background-color: #e8e3d0;
+  text-align: center;
+  color:#6a675d;
+  font-size: 1.5rem;
+}
+
+div.new-q-wrapper .form-group {
+  padding: 0.5em 1.5em 1em;
+}
+
+div.new-q-wrapper .form-text {
+  font-size: 1.1rem;
+}
+
+div.new-q-wrapper label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  margin-top: 1.1em;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+div.new-q-wrapper p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+div.new-q-wrapper form .form-control {
+  height: 3em;
+}
+
+div.new-q-wrapper form .form-control:focus,
+div.new-q-wrapper form .form-control:active {
+  color: #2c3885;
+  background-color: #fff;
+  border-color: #2c3885;
+  outline: 0;
+  box-shadow: none;
+}
+
+div.new-q-wrapper form button, 
+div.login-wrapper form button,
+.q-wrapper div.q-card button {
+  display: block;
+  margin: 2em auto 0;
+  border: none;
+  font-size: 0.85rem;
+  height: 2.8em;
+  font-size: 1rem;
+  background-color: #2c3885;
+  color: #e8e3d0;
+  width: 100%;
+}
+
+div.new-q-wrapper form button.btn-primary:disabled, 
+div.login-wrapper form button.btn-primary:disabled, 
+div.q-wrapper div.q-card button.btn-primary:disabled {
+  background-color: #2c3885;
+  color: #fff;
+}
+
+button.btn-primary:disabled, 
+button.btn-primary:not(:disabled):not(.disabled):active {
+  border-color: #2c3885;
+  background-color: #2c3885;
+  color: #fff;
+  box-shadow: none;
+}
+
+button.btn-primary:not(:disabled):not(.disabled).active:focus {
+  box-shadow: none;
+}
+
+div.new-q-wrapper form button:hover {
+  background-color:#4453aa;
+}
+
+
+/*------ Not Found ------*/
+div.not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 12em;
+}
+
+div.not-found-wrapper p {
+  text-align: center;
+  font-size: 2em;
+ 
+}
+
+div.not-found-wrapper p:first-child {
+  font-weight: bold;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #cd9929;
+  font-family: 'Reggae One', cursive;
+}
+
+
+/*------------ Login Page ------------*/
+div.login-wrapper form button.btn-primary:disabled, 
+div.login-wrapper form button.btn-primary:not(:disabled):not(.disabled):active {
+  border-color: #cd9929;
+  background-color: #cd9929;
+  color: #fff;
+  box-shadow: none;
+}
+
+div.login-wrapper form button {
+  color: #e8e3d0;
+  background-color: #cd9929;
+  border:none;
+}
+
+div.login-wrapper div.row {
+  display: flex;
+  justify-content: center;
+}
+
+div.login-wrapper div.row p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3em;
+  position: relative;
+  font-family: 'Reggae One', cursive;
+}
+
+div.login-wrapper div.row p span:last-child {
+  position: absolute;
+  left: 0.7em;
+  top: 0;
+  font-size: 9rem;
+  color: #cd9929;
+}
+
+div.login-wrapper form {
+  margin-top: 3em;
+}
+
+div.login-wrapper form label.form-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #cd9929;
+}
+
+div.login-wrapper form .form-control {
+  color :#2c3885;
+  border-color: #cd9929;
+  
+}
+
+div.login-wrapper form .form-control option:disabled  {
+  color: #6a675d;
+  background-color: #e8e3d0;
+}
+
+div.login-wrapper form .form-control:hover{
+  cursor: pointer;
+}
+
+div.login-wrapper form .form-control {
+  border-color: #cd9929;
+  background-color: #f3f2ed;
+}
+
+div.login-wrapper form .form-control:focus {
+  border-color: #cd9929;
+  box-shadow: none;
+}
+
+div.login-wrapper form button {
+  margin-top: 1em;
+}
+
+
+/*------------ For Responsive design ------------*/
+@media screen and (max-width: 766px) {
+  html {
+    font-size: 14px;
+  }
+
+  div.q-details {
+    flex-direction: column;
+    justify-content: center;
+    padding-left:0;
+  }
+
+  div.q-card .card-body {
+    border-left: none;
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  div.q-card h4 {
+    padding:0.6em 0.5em;
+
+  }
+
+  .q-wrapper div.q-card {
+    width: 100%;
+  }
+
+  div.top-user-wrapper .top-user {
+    flex-direction: column;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 1.5em;
+  }
+
+  div.top-user-wrapper .top-user div.col:first-child, 
+  div.top-user-wrapper .top-user div.col:last-child {
+    max-width: 100%;
+  }
+
+  div.top-user-wrapper .top-user  h4 {
+    text-align: center;
+  }
+
+  div.top-user-wrapper .top-user div.col {
+    padding: 0 4.5em;
+  }
+
+  div.new-q-wrapper form h3 {
+    font-size: 1.3rem;
+  }
+  
+  div.top-user-wrapper .top-user div.col:first-child span {
+    top: -0.2em;
+    left: 0.4em;
+    font-size: 3.5em;
+  }
 }

@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import QuestionsList from './QuestionsList';
+
 
 
 class Home extends Component {
   render() {
     const { answeredQuestions, unansweredQuestions } = this.props;
     return (
-      <div className="polls-tab">
+      <Container className="polls-tab">
         <Tabs defaultActiveKey="unanswered-questions" id="question-tab" >
           <Tab eventKey="unanswered-questions" title="Unanswered">
             <QuestionsList questionsData={unansweredQuestions} />
           </Tab>
           <Tab eventKey="answered-questions" title="Answered">
             <QuestionsList questionsData={answeredQuestions} isAnswered />
-          </Tab>
- 
+          </Tab> 
         </Tabs>
-      </div>
+      </Container>
     )
   }
 }

@@ -19,13 +19,13 @@ export default function QuestionResults(props) {
   };
 
   return (
-    <Card.Body>
+    <Card.Body  className="q-result">
       <Card.Title>Results:</Card.Title>
       <p>Would you rather</p>
-      <Card>
+      <Card className={optionOne.votes.includes(authedUser) ? 'user-vote' : ''}>
         <Card.Body>
           {/* Display a badge if it is the authedUser answer */}
-          {optionOne.votes.includes(authedUser) && <Badge variant="secondary" pill>Your Answer</Badge>}
+          {optionOne.votes.includes(authedUser) && <Badge pill>Your Answer</Badge>}
           <Card.Text>
             { optionOne.text }
           </Card.Text>
@@ -33,7 +33,7 @@ export default function QuestionResults(props) {
           <p>{ optionOne.votes.length } out of {totalVotes} votes</p>
         </Card.Body>
       </Card>
-      <Card>
+      <Card className={optionTwo.votes.includes(authedUser) ? 'user-vote' : ''}>
         <Card.Body>
           {/* Display a badge if it is the authedUser answer */}
           {optionTwo.votes.includes(authedUser) && <Badge variant="secondary" pill>Your Answer</Badge>}
@@ -44,7 +44,6 @@ export default function QuestionResults(props) {
           <p>{ optionTwo.votes.length } out of {totalVotes} votes</p>
         </Card.Body>
       </Card>
-
-  </Card.Body>
+    </Card.Body>
   )
 }
